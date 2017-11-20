@@ -1,6 +1,12 @@
-# Project Title
+# Terraform alb module
 
-One Paragraph of project description goes here
+Terraform module which creates ALB within VPC on AWS.
+
+These are the resources which created:
+
+* EC2-VPC Security Group
+
+* ALB
 
 ## Getting Started
 
@@ -32,9 +38,21 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
+## Usage example
 
-Explain how to run the automated tests for this system
+Here's the gist of using it in local:
+
+```
+module "alb" {
+  source = "./modules/alb"
+
+  vpc_id            = "${var.vpc_id}"
+  public_subnets    = "${var.public_subnets}"
+  service_name      = "${var.service_name}"
+}
+```
+
+1. Always `terraform plan` to see your change before running `terraform apply`.
 
 ### Break down into end to end tests
 
@@ -52,15 +70,13 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
+## Naming Conventions
 
-Add additional notes about how to deploy this on a live system
+In order to provide consistent developer experience across infrastructure, all names should follow [Naming Conventions](https://github.com/university-of-ant-solutions/naming-conventions)
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Terraform](https://www.terraform.io/) - Write, Plan, and Create Infrastructure as Code
 
 ## Contributing
 
@@ -72,7 +88,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Hoang Nam** - *Initial work* - [particle4dev](https://github.com/particle4dev)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -80,8 +96,8 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+## Reference
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* [terraform-aws-security-group](https://github.com/terraform-aws-modules/terraform-aws-security-group)
+
+* [terraform-aws-modules/alb](https://registry.terraform.io/modules/terraform-aws-modules/alb/aws/2.1.0)
