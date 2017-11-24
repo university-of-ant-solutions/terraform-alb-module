@@ -47,7 +47,7 @@ module "alb" {
   source = "./modules/alb"
 
   vpc_id            = "${var.vpc_id}"
-  public_subnets    = "${var.public_subnets}"
+  subnets           = "${var.subnets}"
   service_name      = "${var.service_name}"
 }
 ```

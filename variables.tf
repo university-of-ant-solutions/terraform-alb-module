@@ -1,9 +1,9 @@
 variable "security_group_alb" {
-  default = "security-group-alb-as1-s"
+  default = "security-group-alb-as1"
 }
 
 variable "alb_name" {
-  default = "alb-as1-s"
+  default = "alb-as1"
 }
 
 variable "health_check_path" {
@@ -11,18 +11,9 @@ variable "health_check_path" {
   description = "The default health check path"
 }
 
-variable "public_subnets" {
-  type        = "list"
-  description = "List of public subnet ids to place the loadbalancer in"
-}
-
 variable "deregistration_delay" {
   default     = "30"
   description = "The default deregistration delay"
-}
-
-variable "vpc_id" {
-  description = "The VPC id"
 }
 
 variable "allow_cidr_block" {
@@ -33,3 +24,14 @@ variable "allow_cidr_block" {
 variable "service_name" {
   description = "The name of the service."
 }
+
+variable "vpc_id" {
+  description = "The VPC id"
+}
+
+variable "subnets" {
+  type        = "list"
+  description = "List of subnet ids to place the loadbalancer in"
+}
+
+variable "environment" {}

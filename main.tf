@@ -1,8 +1,8 @@
 # Default ALB implementation that can be used connect ECS instances to it
 
 locals {
-  security_group_alb  = "${var.security_group_alb}-${var.service_name}"
-  alb_name            = "${var.alb_name}-${var.service_name}"
+  security_group_alb  = "${var.security_group_alb}-${var.environment}-${var.service_name}"
+  alb_name            = "${var.alb_name}-${var.environment}-${var.service_name}"
 }
 
 resource "aws_alb_target_group" "default" {
@@ -22,7 +22,7 @@ resource "aws_alb_target_group" "default" {
 
 resource "aws_alb" "alb" {
   name            = "${local.alb_name}"
-  subnets         = ["${var.public_subnets}"]
+  subnets         = ["${var.subnets}"]
   security_groups = ["${aws_security_group.alb.id}"]
 
   tags {}
